@@ -28,15 +28,13 @@ main = do
   putStrLn "Starting server..."
 
   scotty 3000 $ do
-    get "/" $ do
-      text ("Welcome to awesome scotty!")
+    get "/" $ text "Welcome to awesome scotty!"
 
     get "/hello/:name/" $ do
       name <- param "name"
       text ("Hello " <> name <> "!")
 
-    get "/users" $ do
-      json allUsers
+    get "/users" $ json allUsers
 
     get "/users/:id" $ do
       id <- param "id"
